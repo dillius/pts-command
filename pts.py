@@ -27,7 +27,10 @@ def get_user(user):
     req = urllib.request.Request(url)
     resp = urllib.request.urlopen(req)
     result = json.loads(resp.read().decode('ascii'))
-    print("{0} is at tolerance level: {1}".format(user, result['level']))
+    if result:
+        print("{0} is at tolerance level: {1}".format(user, result['level']))
+    else:
+        print("{0} is not currently registered".format(user))
 
 
 def update_user(user, change):
